@@ -2,7 +2,7 @@
 
 The repository provides an api for handling [Visual Genome](https://visualgenome.org/) dataset. This repository is based on the original [Visual Genome Python Driver](https://visualgenome.org/api/v0/).
 
-# Why an addition repo if you have the original [Visual Genome Python Driver](https://visualgenome.org/api/v0/)?
+#### Why an addition repo if you have the original [Visual Genome Python Driver](https://visualgenome.org/api/v0/)?
 
 The original repo primarily provides an api for acquiring data remotely (from the server directly). This repository provides functionality for the case when you have downloaded the data and are accessing them locally, which is what you do most of the time. Further, we provide COCO style VisualGenome class for the task of object recognition.
 
