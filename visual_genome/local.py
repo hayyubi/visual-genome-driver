@@ -13,7 +13,11 @@ def get_all_image_data(data_dir=None):
     """
     if data_dir is None:
         data_dir = utils.get_data_dir()
-    dataFile = os.path.join(data_dir, 'image_data.json')
+    # In case when exact filename is passed
+    if os.path.isdir(data_dir):
+        dataFile = os.path.join(data_dir, 'image_data.json')
+    else:
+        dataFile = data_dir
     data = json.load(open(dataFile))
     return [utils.parse_image_data(image) for image in data]
 
@@ -24,7 +28,11 @@ def get_all_region_descriptions(data_dir=None):
     """
     if data_dir is None:
         data_dir = utils.get_data_dir()
-    data_file = os.path.join(data_dir, 'region_descriptions.json')
+    # In case when exact filename is passed
+    if os.path.isdir(data_dir):
+        data_file = os.path.join(data_dir, 'region_descriptions.json')
+    else:
+        dataFile = data_dir
     image_data = get_all_image_data(data_dir)
     image_map = {}
     for d in image_data:
@@ -35,6 +43,29 @@ def get_all_region_descriptions(data_dir=None):
         output.append(utils.parse_region_descriptions(
             image['regions'], image_map[image['id']]))
     return output
+
+def get_all_objects(data_dir=None):
+    """
+    Get all region descriptions.
+    """
+    if data_dir is None:
+        data_dir = utils.get_data_dir()
+    # In case when exact filename is passed
+    if os.path.isdir(data_dir):
+        data_file = os.path.join(data_dir, 'objects.json')
+    else:
+        dataFile = data_dir
+    image_data = get_all_image_data(data_dir)
+    image_map = {}
+    for d in image_data:
+        image_map[d.id] = d
+    images = json.load(open(data_file))
+    output = []
+    for image in images:
+        output.append(utils.parse_region_descriptions(
+            image['regions'], image_map[image['id']]))
+    return output
+
 
 
 def get_all_qas(data_dir=None):

@@ -101,6 +101,23 @@ def parse_region_descriptions(data, image):
                               info['height']))
     return regions
 
+def parse_object_data(data):
+    """
+    Helper to parse object data.
+    """
+    objects = []
+    if len(data) == 0:
+        return None
+    if 'object_id' in data[0]:
+        object_id_key = 'object_id'
+    else:
+        object_id_key = 'id'
+    for info in data:
+        objects.append(Object(info[object_id_key], info['x'], info['y'], 
+                              info['w'], info['h'], info['names'], info['synsets']))
+    return objects
+
+
 
 def parse_QA(data, image_map):
     """

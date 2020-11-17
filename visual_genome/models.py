@@ -99,6 +99,7 @@ class Object:
         self.height = height
         self.names = names
         self.synsets = synsets
+        self.bbox = [x, y, width, height]
 
     def __str__(self):
         name = self.names[0] if len(self.names) != 0 else 'None'
