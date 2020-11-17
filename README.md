@@ -1,3 +1,13 @@
+# Visual Genome Driver for COCO style Object Recognition
+
+The repository provides an api for handling [Visual Genome](https://visualgenome.org/) dataset. This repository is based on the original [Visual Genome Python Driver](https://visualgenome.org/api/v0/).
+
+# Why an addition repo if you have the original [Visual Genome Python Driver](https://visualgenome.org/api/v0/)?
+
+The original repo primarily provides an api for acquiring data remotely (from the server directly). This repository provides functionality for the case when you have downloaded the data and are accessing them locally, which is what you do most of the time. Further, we provide COCO style VisualGenome class for the task of object recognition.
+
+Below is the README from the original repo. I was too lazy to add the new functionalities here in the readme. All new functionality can be listed in the first commit.
+
 # Visual Genome Python Driver
 A python wrapper for the [Visual Genome API](https://visualgenome.org/api/v0/). Visit the website for a complete list of [object models](https://visualgenome.org/api/v0/api_object_model.html) and details about all [endpoints](https://visualgenome.org/api/v0/api_endpoint_reference.html). Look at our [demo](https://github.com/ranjaykrishna/visual_genome_python_driver/blob/master/region_visualization_demo.ipynb) to see how you can use the python driver to access all the Visual Genome data.
 
