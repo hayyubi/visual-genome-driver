@@ -97,7 +97,7 @@ class Object:
         self.y = y
         self.width = width
         self.height = height
-        self.names = names
+        self.names = names[0]
         self.synsets = synsets
         self.bbox = [x, y, width, height]
 

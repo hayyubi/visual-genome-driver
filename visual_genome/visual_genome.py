@@ -39,7 +39,8 @@ class VisualGenome:
         # create index
         print('creating index...')
 
-        objects,imgs = {},{}
+        objects = set()
+        imgs = {}
         imgToAnns = defaultdict(list)
         for data in self.image_data:
             image = parse_image_data(data)
@@ -55,14 +56,15 @@ class VisualGenome:
                 continue
             imgToAnns[img_id] = objs
             for obj in objs:
-                objects[obj.id] = obj.names
+                objects.add(obj.names)
 
         print('index created!')
 
         # create class members
         self.imgToAnns = imgToAnns
         self.imgs = imgs
-        self.objects = objects
+        self.objects = dict(zip(range(len(objects)), list(objects)))
+        self.object_to_id = dict(zip(list(objects), range(len(objects))))
 
     def loadAnns(self, image_ids=[]):
         """
@@ -106,3 +108,6 @@ class VisualGenome:
         :return: ids (int array)   : integer array of objects ids
         """
         return self.objects.keys()
+    
+    def getIdOfObject(self, obj):
+        return self.object_to_id[obj.names]
